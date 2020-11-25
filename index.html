@@ -11,6 +11,7 @@
   </head>
   <body>
     <div id="app" class="container">
+
       <input type="text" name="search"
         v-model="newSearch" @keyup.enter="getMovie"
         placeholder="Inserisci film o serie tv"
@@ -18,19 +19,22 @@
       <button type="button" name="button" @click="getMovie">
         Cerca
       </button>
+
       <div class="">
         <ul>
           <li v-for="result in results">
             <div class="">
               <h3> Titolo: {{result.title}} </h3>
               <h4> Titolo originale: {{result.original_title}} </h4>
-              <h5> Lingua: {{result.original_language}} </h5>
+              <h5> Lingua:
+                <img v-if="viewImgLanguage(result.original_language)"
+                  :src="'./img/'+ result.original_language + '.png'" alt="">
+                <span v-else> {{result.original_language}} </span>
+              </h5>
               <h5> Voto: {{result.vote_average}} </h5>
-            </div> 
-          </li>
-
+            </div>
+         </li>
         </ul>
-
       </div>
 
     </div>

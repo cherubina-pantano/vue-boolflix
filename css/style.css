@@ -1,3 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
 }
+
+img {
+  width: 45px;
+  height: 30px;
+}
