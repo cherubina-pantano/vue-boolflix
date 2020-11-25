@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Boolflix</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
+    <div id="app" class="container">
+      <input type="text" name="search"
+        v-model="newSearch" @keyup.enter="getMovie"
+        placeholder="Inserisci film o serie tv"
+      >
+      <button type="button" name="button" @click="getMovie">
+        Cerca
+      </button>
+      <div class="">
+        <ul>
+          <li v-for="result in results">
+            <div class="">
+              <h3> Titolo: {{result.title}} </h3>
+              <h4> Titolo originale: {{result.original_title}} </h4>
+              <h5> Lingua: {{result.original_language}} </h5>
+              <h5> Voto: {{result.vote_average}} </h5>
+            </div> 
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
 
 
 
