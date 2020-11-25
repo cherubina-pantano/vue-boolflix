@@ -29,10 +29,13 @@ const app = new Vue({
     // visualizzare img o testo in base alla lingua
     viewImgLanguage(language) {
       if(language == 'it' || language == 'en') {
-        console.log('ciao');
           return true;
       }
       return false;
+    },
+    getVote(vote) {
+      // arrotonda al valore intero più vicino
+      return Math.round(vote / 2);
     }
 
   } //Fine methods

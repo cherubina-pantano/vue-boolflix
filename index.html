@@ -31,7 +31,11 @@
                   :src="'./img/'+ result.original_language + '.png'" alt="">
                 <span v-else> {{result.original_language}} </span>
               </h5>
-              <h5> Voto: {{result.vote_average}} </h5>
+              <h5> Voto:
+                <i v-for="n in getVote(result.vote_average)" class="fas fa-star"></i>
+                <i v-for="n in 5 - getVote(result.vote_average)"class="far fa-star"></i>
+                <!-- {{result.vote_average}}  -->
+              </h5>
             </div>
          </li>
         </ul>
