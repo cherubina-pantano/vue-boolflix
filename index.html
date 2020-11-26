@@ -13,31 +13,37 @@
     <div id="app" class="container">
 
       <input type="text" name="search"
-        v-model="newSearch" @keyup.enter="getMovie"
+        v-model="newSearch" @keyup.enter="getSearch"
         placeholder="Inserisci film o serie tv"
       >
-      <button type="button" name="button" @click="getMovie">
+      <button type="button" name="button" @click="getSearch">
         Cerca
       </button>
 
-      <div class="">
+      <div v-for="result in results" class="">
         <ul>
-          <li v-for="result in results">
-            <div class="">
-              <h3> Titolo: {{result.title}} </h3>
-              <h4> Titolo originale: {{result.original_title}} </h4>
-              <h5> Lingua:
-                <img v-if="viewImgLanguage(result.original_language)"
-                  :src="'./img/'+ result.original_language + '.png'" alt="">
-                <span v-else> {{result.original_language}} </span>
-              </h5>
-              <h5> Voto:
-                <i v-for="n in getVote(result.vote_average)" class="fas fa-star"></i>
-                <i v-for="n in 5 - getVote(result.vote_average)"class="far fa-star"></i>
-                <!-- {{result.vote_average}}  -->
-              </h5>
-            </div>
-         </li>
+          <li>
+              <h3 v-if="result.title"> Titolo: {{result.title}} </h3>
+              <h3 v-if="result.name"> Titolo: {{result.name}} </h3>
+          </li>
+          <li>
+            <h4 v-if="result.original_title"> Titolo originale: {{result.original_title}} </h4>
+            <h4 v-if="result.original_name"> Titolo originale: {{result.original_name}} </h4>
+          </li>
+          <li>
+            <h5> Lingua:
+              <img v-if="viewImgLanguage(result.original_language)"
+                :src="'./img/'+ result.original_language + '.png'" alt="">
+              <span v-else> {{result.original_language}} </span>
+            </h5>
+          </li>
+          <li>
+            <h5> Voto:
+              <i v-for="n in getVote(result.vote_average)" class="fas fa-star"></i>
+              <i v-for="n in 5 - getVote(result.vote_average)"class="far fa-star"></i>
+              <!-- {{result.vote_average}}  -->
+            </h5>
+          </li>
         </ul>
       </div>
 

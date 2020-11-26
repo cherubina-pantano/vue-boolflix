@@ -5,11 +5,15 @@ const app = new Vue({
   el: '#app',
   data: {
       newSearch: '',
-      results: '',
+      results: [],
   },
   methods: {
-    getMovie() {
-      // per ottenere dati da API
+    // per ottenere dati da API
+    getSearch() {
+      this.results= [];
+      /*
+      * FILM
+      */
       axios.get('https://api.themoviedb.org/3/search/movie', {
           params: {
             api_key: 'dddf18dfaffab29c0f83dd0efe0302df',
@@ -19,13 +23,39 @@ const app = new Vue({
       })
       .then( result => {
           // console.log(result.data);
-          this.results= result.data.results;
-
+          const res = result.data.results;
+          // Mile1
+          // this.results= res;
+          // Mile2
+          this.results= this.results.concat(res);
         })
        .catch(error => {
          console.log(error);
        });
+
+       /*
+       * SERIE TV
+       */
+       axios.get('https://api.themoviedb.org/3/search/tv', {
+           params: {
+             api_key: 'dddf18dfaffab29c0f83dd0efe0302df',
+             query: this.newSearch,
+             language: 'it-IT',
+           }
+       })
+       .then( result => {
+           // console.log(result.data);
+           const res = result.data.results;
+
+           this.results= this.results.concat(res);
+
+         })
+        .catch(error => {
+          console.log(error);
+        });
     },
+
+
     // visualizzare img o testo in base alla lingua
     viewImgLanguage(language) {
       if(language == 'it' || language == 'en') {
