@@ -6,6 +6,7 @@ const app = new Vue({
   data: {
       newSearch: '',
       results: [],
+      baseImgUrl: 'https://image.tmdb.org/t/p/w342',
   },
   methods: {
     // per ottenere dati da API
@@ -55,7 +56,6 @@ const app = new Vue({
         });
     },
 
-
     // visualizzare img o testo in base alla lingua
     viewImgLanguage(language) {
       if(language == 'it' || language == 'en') {
@@ -63,9 +63,20 @@ const app = new Vue({
       }
       return false;
     },
+
+    // proporzione scala voti
     getVote(vote) {
       // arrotonda al valore intero più vicino
       return Math.round(vote / 2);
+    },
+
+    // verificare la presenza dell'img
+    getCover(cover) {
+      console.log(cover);
+      if(cover == null) {
+        return 'https://www.altavod.com/assets/images/poster-placeholder.png';
+      }
+      return  this.baseImgUrl + cover;
     }
 
   } //Fine methods

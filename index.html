@@ -23,6 +23,9 @@
       <div v-for="result in results" class="">
         <ul>
           <li>
+              <img :src="getCover(result.poster_path)" alt="">
+          </li>
+          <li>
               <h3 v-if="result.title"> Titolo: {{result.title}} </h3>
               <h3 v-if="result.name"> Titolo: {{result.name}} </h3>
           </li>
@@ -32,7 +35,8 @@
           </li>
           <li>
             <h5> Lingua:
-              <img v-if="viewImgLanguage(result.original_language)"
+              <img class="flag"
+                v-if="viewImgLanguage(result.original_language)"
                 :src="'./img/'+ result.original_language + '.png'" alt="">
               <span v-else> {{result.original_language}} </span>
             </h5>
