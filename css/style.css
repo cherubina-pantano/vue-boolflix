@@ -15,6 +15,11 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: #9EB3C2;
+}
+
 /* LAYOUT */
 .container {
   position: relative;
@@ -29,7 +34,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 99%;
   padding: 10px;
   z-index: 1;
   /* background-color: #002738; */
@@ -40,7 +45,19 @@ img {
 .top-header .logo {
   max-height: 50px;
 }
-
+/* MENU */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.main-menu {
+  margin-left: 10px;
+}
+.main-menu li {
+  display: inline-block;
+  padding: 0 10px;
+}
+/* Search */
 .header-search {
   background-color: rgba(0,39,56,.6);
 }
@@ -81,10 +98,35 @@ img {
 }
 
 .cards-list li {
+  position: relative;
   /* margin:10px 20px; */
   max-width: 342px;
   padding: 20px;
   background-color: #002738;
+  /* filter:blur(0);
+  transition: filter .3s; */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  /* color: #f1f1f1; */
+  background: rgba(0,0,0, .8);
+  transition: .4s;
+  opacity: 0;
+  font-size: 14px;
+  padding: 10% 10px;
+  text-align: justify;
+  line-height: 20px;
+  overflow: auto;
+}
+
+.cards-list li:hover .overlay {
+  /* filter: blur(2px); */
+  opacity: 1;
 }
 
 .cards-list .wrap-images {

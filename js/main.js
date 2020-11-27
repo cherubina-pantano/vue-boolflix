@@ -7,6 +7,7 @@ const app = new Vue({
       newSearch: '',
       results: [],
       baseImgUrl: 'https://image.tmdb.org/t/p/w342',
+      isNotOverview: 'La trama non è disponibile',
   },
   methods: {
     // per ottenere dati da API
