@@ -13,15 +13,21 @@
     <div id="app" class="container">
       <!-- Header -->
       <header class="top-header">
-        <img class="logo" src="https://fontmeme.com/permalink/201126/a7a378ef081972590aec29e42b968eb0.png" alt="">
+        <a href="#">
+          <img class="logo"
+              src="https://fontmeme.com/permalink/201126/a7a378ef081972590aec29e42b968eb0.png" alt="">
+        </a>
         <div class="header-search">
+          <i @click="getSearch" class="fas fa-search"></i>
           <input type="text" name="search"
             v-model="newSearch" @keyup.enter="getSearch"
             placeholder="Inserisci film o serie tv"
           >
-          <button type="button" name="button" @click="getSearch">
+          <!-- <button type="button" name="button" @click="getSearch">
             Cerca
-          </button>
+            <i class="fas fa-search"></i>
+
+          </button> -->
         </div>
       </header>
       <div class="cards-container">
